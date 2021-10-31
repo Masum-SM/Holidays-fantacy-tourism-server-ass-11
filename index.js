@@ -77,6 +77,15 @@ async function run() {
         })
 
 
+        // Delete sigle api 
+        app.delete('/orders/:id', async (req, res) => {
+            const id = req.params.id;
+            const qurey = { _id: ObjectId(id) };
+            const result = await orderCollection.deleteOne(qurey)
+            res.json(result)
+        })
+
+
     }
     finally {
         //  await client.close()
